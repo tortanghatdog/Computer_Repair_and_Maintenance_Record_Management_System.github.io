@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Computer Repair and Maintenance Record System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="top">
+    <h1>Computer Repair and Maintenance Record System</h1>
+    <button type="button" id="navToggle" aria-expanded="false" aria-controls="tabs" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav id="tabs">
+    <button type="button" data-view="add" class="active">Add customer</button>
+    <button type="button" data-view="all">View all customers</button>
+    <button type="button" data-view="search">Search customer</button>
+    <button type="button" data-view="update">Update repair status</button>
+  </nav>
+</header>
+
+<main>
+  <section id="add" class="view active">
+    <h2>Add customer</h2>
+    <form id="addForm">
+      <div class="row">
+        <label>Name <input id="name" maxlength="49" required></label>
+        <label>Contact number <input id="cpNumber" maxlength="19" required></label>
+      </div>
+      <label>Unit <input id="unit" maxlength="49" required></label>
+      <label>Unit problem <input id="problem" maxlength="99" required></label>
+      <label>Repair cost (PHP) <input id="cost" min="0" step="0.01" required></label>
+      <button class="primary" type="submit">Add customer</button>
+      <p class="msg" id="addMsg" role="status"></p>
+    </form>
+  </section>
+
+  <section id="all" class="view">
+    <h2>All customer records</h2>
+    <div id="allList"></div>
+  </section>
+
+  <section id="search" class="view">
+    <h2>Search customer</h2>
+    <form id="searchForm" class="inline">
+      <label>Customer ID <input id="searchId" min="1" step="1" required></label>
+      <button class="primary" type="submit">Search</button>
+    </form>
+    <p class="msg" id="searchMsg" role="status"></p>
+    <div id="searchResult" class="result"></div>
+  </section>
+
+  <section id="update" class="view">
+    <h2>Update repair status</h2>
+    <form id="findForm" class="inline">
+      <label>Customer ID <input id="updateId"min="1" step="1" required></label>
+      <button class="primary" type="submit">Find customer</button>
+    </form>
+    <p class="msg" id="updateMsg" role="status"></p>
+    <div id="updateBox" class="result"></div>
+
+    <div id="updateActions" class="card actions" hidden>
+      <h3>Add a new problem</h3>
+      <form id="problemForm">
+        <label>New problem <input id="newProblem" maxlength="99" required></label>
+        <label>Repair cost (PHP) <input id="newCost" min="0" step="0.01" required></label>
+        <button class="primary" type="submit">Add problem</button>
+      </form>
+      <hr>
+      <button class="secondary" type="button" id="completeBtn">Mark repair as completed</button>
+    </div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
